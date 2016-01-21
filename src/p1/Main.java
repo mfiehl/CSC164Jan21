@@ -6,7 +6,7 @@ package p1;
  * CSC 164
  * Mike Fiehl
  * 21, Jan 2016
- * Version 0.1
+ * Version 1.0
  */
 
 import java.util.Scanner;
@@ -20,6 +20,8 @@ public class Main
 
         //Declare variables
         char option;
+        double price = 0;
+        String sandwich = " ";
 
         System.out.println("Welcome to Jimmy Johns");
 
@@ -33,13 +35,51 @@ public class Main
             System.out.print("Enter your choice: ");
 
             //Get user input and convert to upper case
-            String choice = input.next();
-            choice = choice.toUpperCase();
+            //String choice = input.next().toUpperCase();
 
             //Get first character of user input
-            option = choice.charAt(0);
+            option = input.next().toUpperCase().charAt(0);
 
-            System.out.println("choice = " + choice + ", option = " + option);
+            switch(option)
+            {
+                //option = Ham
+                case 'H':
+                    sandwich = "Ham";
+                    price = 5.50;
+                    break;
+
+                //option = Roast Beef
+                case 'R':
+                    sandwich = "Roast Beef";
+                    price = 6.25;
+                    break;
+
+                //option = Salami
+                case 'S':
+                    sandwich = "Salami";
+                    price = 4.50;
+                    break;
+
+                //option = Turkey
+                case 'T':
+                    sandwich = "Turkey";
+                    price = 5.25;
+                    break;
+
+                case 'D':
+                    price = 0;
+                    break;
+
+                default:
+                    price = 0;
+                    System.out.println("Option " + option + " not available");
+            }
+
+            //Give user order information if valid order
+            if (price != 0)
+            {
+                System.out.printf("%s Sandwich Cost $%.2f\n", sandwich, price);
+            }
 
         }while(option != 'D'); //End do-while
 
